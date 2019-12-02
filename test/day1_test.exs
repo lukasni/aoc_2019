@@ -18,4 +18,12 @@ defmodule Aoc2019.Day1Test do
       assert FuelCounter.sum_modules(modules) == expected_fuel
     end
   end
+
+  describe "Part 2 damn you Tsiolkovsky" do
+    test "it should calculate the fuel requirement accounting for fuel mass" do
+      assert FuelCounter.account_for_fuel_mass(14) == 2
+      assert FuelCounter.account_for_fuel_mass(1969) == 966
+      assert FuelCounter.account_for_fuel_mass(100_756) == 50_346
+    end
+  end
 end

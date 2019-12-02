@@ -19,6 +19,28 @@ defmodule Aoc2019.Day1.FuelCounter do
     end)
   end
 
+  def sum_modules_accounting_for_fuel_mass(modules) do
+    modules
+    |> Enum.reduce(0, fn module, acc ->
+      acc + account_for_fuel_mass(module)
+    end)
+    |> trunc()
+  end
+
+  def account_for_fuel_mass(module_mass) do
+    recurse_fuel(module_mass, 0)
+  end
+
+  defp recurse_fuel(mass, acc) do
+    case module_fuel(mass) do
+      m when m > 0 ->
+        recurse_fuel(m, acc + m)
+
+      _m ->
+        acc
+    end
+  end
+
   def stream_input_file(path) do
     path
     |> File.stream!()
