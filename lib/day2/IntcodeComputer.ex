@@ -13,10 +13,6 @@ defmodule Aoc2019.Day2.IntcodeComputer do
     {:halt, mem}
   end
 
-  def opcode(_, mem) do
-    {:halt, mem}
-  end
-
   def run(program) when is_list(program) do
     {:run, program}
     |> run(0)
